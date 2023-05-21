@@ -35,11 +35,13 @@ export class WelcomeComponent implements OnInit {
     );
   }
 
-  handleSuccessfulResponse(response: any): any {
+  handleSuccessfulResponse(response: any): void {
     this.welcomeMessageFromService = response.message;
   }
 
-  handleErrorResponse(error: any): any {
+  handleErrorResponse(error: any): void {
     this.welcomeMessageFromService = error.error.message;
   }
+
+
 }
