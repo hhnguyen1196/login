@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {ListDataService} from '../service/data/list-data.service';
+import {TodoDataService} from '../service/data/todo-data.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-list-todos',
@@ -12,11 +13,17 @@ export class ListTodosComponent implements OnInit {
 
   message: string;
 
-  constructor(private todoService: ListDataService) {
+  constructor(
+    private todoService: TodoDataService,
+    private router: Router) {
   }
 
   ngOnInit() {
     this.refreshTodos();
+  }
+
+  updateTodo(id: number): void {
+    this.router.navigate(['todos', id]);
   }
 
   deleteTodo(id: number): void {
@@ -33,6 +40,10 @@ export class ListTodosComponent implements OnInit {
     this.todoService.getDataTodos('karina').subscribe(
       response => this.todos = response
     );
+  }
+
+  addTodo(): void {
+    this.router.navigate(['todos', -1]);
   }
 }
 

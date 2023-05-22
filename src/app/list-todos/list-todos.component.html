@@ -1,6 +1,7 @@
 <h1>My Todo's</h1>
 <div class="alert alert-success" *ngIf="message">{{message}}</div>
 <div class="container">
+  <button class="btn btn-primary mb-4" (click)="addTodo()">Add</button>
   <table class="table table-bordered">
     <thead class="table-light">
       <tr>
@@ -13,9 +14,12 @@
     <tbody>
       <tr *ngFor="let todo of todos">
         <td>{{todo.description}}</td>
-        <td>{{todo.targetDate}}</td>
+        <td>{{todo.targetDate | date:'dd/MM/yyyy'}}</td>
         <td>{{todo.isDone}}</td>
-        <td><button class="btn btn-danger" (click)="deleteTodo(todo.id)">Delete</button></td>
+        <td class="text-center">
+          <button class="btn btn-warning me-3" (click)="updateTodo(todo.id)">Update</button>
+          <button class="btn btn-danger" (click)="deleteTodo(todo.id)">Delete</button>
+        </td>
       </tr>
     </tbody>
   </table>
