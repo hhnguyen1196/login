@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Todo} from '../../list-todos/list-todos.component';
 
@@ -16,10 +16,6 @@ export class TodoDataService {
   }
 
   getTodo(username: string, id: number): Observable<any> {
-    // const basicAuthHeaderString = this.createBasicAuthenticationHttpHeader();
-    // const headers: HttpHeaders = new HttpHeaders({
-    //   authorization: basicAuthHeaderString
-    //   });
     return this.http.get<Todo>(`http://localhost:8080/users/${username}/todos/${id}`);
   }
 
@@ -34,11 +30,4 @@ export class TodoDataService {
   deleteTodo(username: string, id: number): Observable<any> {
     return this.http.delete<Todo[]>(`http://localhost:8080/users/${username}/todos/${id}`);
   }
-
-  // createBasicAuthenticationHttpHeader(): string {
-  //   const username = 'username';
-  //   const password = 'password';
-  //   const basicAuthHeaderString = 'Basic ' + window.btoa(username + ':' + password);
-  //   return basicAuthHeaderString;
-  // }
 }

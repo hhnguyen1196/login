@@ -11,25 +11,12 @@ export class WelcomeDataService {
 
 
   executeHelloWorldBeanService(): Observable<any> {
-    const basicAuthHeaderString = this.createBasicAuthenticationHttpHeader();
-    const headers: HttpHeaders = new HttpHeaders({
-      authorization: basicAuthHeaderString});
-    return this.http.get<HelloWorldBean>('http://localhost:8080/hello-world-bean', {headers});
+    return this.http.get<HelloWorldBean>('http://localhost:8080/hello-world-bean');
   }
 
   executeHelloWorldServicesWithPathVariable(name: string): Observable<any> {
-    const basicAuthHeaderString = this.createBasicAuthenticationHttpHeader();
-    const headers: HttpHeaders = new HttpHeaders({
-      authorization: basicAuthHeaderString});
-    return this.http.get<HelloWorldBean>(`http://localhost:8080/hello-world/path-variable/${name}`, {headers});
+    return this.http.get<HelloWorldBean>(`http://localhost:8080/hello-world/path-variable/${name}`);
   }
-
-  createBasicAuthenticationHttpHeader(): string {
-    const username = 'user';
-    const password = 'password';
-    return 'Basic ' + window.btoa(username + ':' + password);
-  }
-
 }
 
 export class HelloWorldBean {

@@ -1,7 +1,7 @@
 <h1>Login</h1>
 <div class="container">
   <div class="alert alert-danger" *ngIf="invalidLogin">{{errorMessage}}</div>
-  <table>
+  <form (ngSubmit)="handleBasicLogin()">
     <tr>
       <td><label class="fw-bold" for="username">Username</label></td>
       <td><input class="form-control" type="text" id="username" name="username" [(ngModel)]="username"></td>
@@ -10,6 +10,6 @@
       <td><label class="fw-bold" for="password">Password</label></td>
       <td><input class="form-control" type="password" id="password" name="password" [(ngModel)]="password"></td>
     </tr>
-  </table>
-  <button class="btn btn-success" (click)="handleLogin()">Login</button>
+    <button class="btn btn-success" type="submit">Login</button>
+  </form>
 </div>

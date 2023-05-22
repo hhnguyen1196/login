@@ -3,7 +3,7 @@
   <div class="alert alert-danger" *ngIf="todoForm.dirty && todoForm.invalid">Enter valid values</div>
   <div class="alert alert-danger" *ngIf="todoForm.dirty && targetDate.invalid">Enter valid Target Date values</div>
   <div class="alert alert-danger" *ngIf="todoForm.dirty && description.invalid">
-    Enter atleast 5 characters in Description
+    Enter at least 5 characters in Description
   </div>
   <form (ngSubmit)="!todoForm.invalid && saveTodo()" #todoForm="ngForm">
     <div class="my-3">
